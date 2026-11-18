@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "next build && wrangler deploy",
+    "preview": "next build && wrangler dev"
   },
   "dependencies": {
     "@vis.gl/react-google-maps": "^1.5.3",
@@ -22,7 +24,8 @@
     "@types/node": "^26.6.6",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.163.0"
   },
   "packageManager": "pnpm@12.21.0"
 }
