@@ -1,10 +1,13 @@
 import React from "react";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+
+// 店舗の位置（青森県八戸市妙花生8-161）
+const position = { lat: 40.4854, lng: 141.5455 };
+
+// API キーが要らない Google マップの埋め込み URL
+// maps.google.com/maps?q=緯度,経度&z=15&hl=ja&output=embed のリダイレクト先を直接指定している
+const embedUrl = `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${position.lat},${position.lng}!6i15!3m1!1sja!5m1!1sja`;
 
 const GoogleMap = () => {
-  // 八戸市妙の位置（例：緯度40.5089, 経度141.4894）
-  const position = { lat: 40.4854, lng: 141.5455 };
-
   return (
     <div
       style={{
@@ -14,16 +17,16 @@ const GoogleMap = () => {
         margin: "0 auto",
       }}
     >
-      <APIProvider apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || ""}>
-        <Map
-          center={position}
-          zoom={15}
-          gestureHandling={"greedy"}
-          disableDefaultUI={false}
-        >
-          <Marker position={position} />
-        </Map>
-      </APIProvider>
+      <iframe
+        src={embedUrl}
+        title="イットフィールズイットの地図（Google マップ）"
+        width="100%"
+        height="100%"
+        style={{ border: 0 }}
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        allowFullScreen
+      />
     </div>
   );
 };
