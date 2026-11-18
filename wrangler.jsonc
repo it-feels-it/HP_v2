@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "it-feels-it",
+  "compatibility_date": "2026-11-18",
+  // next build（output: "export"）が書き出した静的ファイルをそのまま配信する
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}
